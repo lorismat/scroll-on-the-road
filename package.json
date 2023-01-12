@@ -8,6 +8,16 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.0.0"
+    "autoprefixer": "^10.4.13",
+    "nuxt": "3.0.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "d3": "^7.8.1",
+    "intersection-observer": "^0.12.2",
+    "scrollama": "^3.2.0",
+    "topojson-client": "^3.1.0"
   }
 }
