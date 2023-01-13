@@ -16,18 +16,21 @@ function drawMap() {
   const width = 975;
   const height = 610;
 
-  const us = d3.json("/map/states-albers-10m.json",function(d) {
+  const us = d3.json("/map/states-albers-10m-min.json",function(d) {
     return d;
   })
 
-  const wal = d3.csv("/map/places.csv", function(d) {
+  const road = d3.json("/map/Part1-min.json", function(d) {
     return d;
   })
 
   us.then((data) => {
 
+    // console.log("states pre", data);
     const states = topojson.feature(data, data.objects.states).features.filter(d => d.id !== "02" && d.id !== "15" );
     const path = d3.geoPath();
+
+    // console.log("states clean", topojson.feature(data, data.objects.states).features);
 
     const svg = d3.select("#us-map")
       .append("svg")
@@ -46,29 +49,48 @@ function drawMap() {
     return svg
       
   }).then((svg) => {
+    console.log("ready for path");
 
-    wal.then((data) => {
+    road.then((data) => {
+
+      const road = topojson.feature(data, data.objects["Part1-2"]).features;
+      const points = topojson.feature(data, data.objects["Part1-1"]).features;
+
+      console.log(points);
 
       const projection = d3.geoAlbersUsa().scale(1280).translate([480, 300]);
-      
+      const path = d3.geoPath(projection);
+
+      svg
+        .append('g')
+        .selectAll('rect')
+        .data(road)
+        .enter()
+        .append('path')
+        .attr('d', path)
+        .attr("fill", "transparent")
+        .attr("stroke-width", 3)
+        .attr("stroke", "blue");
+
       const g = svg.append("g")
-      .attr("fill", "none")
-      .attr("stroke", "black");
+        .attr("fill", "none")
+        .attr("stroke", "black");
 
       g.selectAll("circle")
-        .data(data)
+        .data(points)
         .join("circle")
-          .attr("data-idx", d => d.idx)
+          .attr("data-idx", (d,i) => i)
           .attr("opacity", 0)
-          .attr("fill", "red")
+          .attr("fill", "green")
           .attr("stroke", "#000")
           .attr("stroke-width", 2)
           .attr("r", 5)
-          .attr("transform", d => `translate(${projection(d)})`);
+          .attr("transform", d => console.log(d) || `translate(${projection(d.geometry.coordinates)})`);
 
     })
+  })
 
-  })   
+
 }
 
 onMounted(() => {
