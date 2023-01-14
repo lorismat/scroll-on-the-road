@@ -5,8 +5,8 @@
       v-for="l in trackingData"
       :text="l.text"
       :place="l.place"
-      :lat="l.lat"
-      :lon="l.lon"
+      :state="l.state"
+      :transp="l.transportation"
       :idx="l.idx"
     />
     
