@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto max-w-lg">
+  <div>
 
     <ScrollCard 
       v-for="l in trackingData"
@@ -18,8 +18,5 @@
 defineProps({
   trackingData: Array
 })
-
-
-
 
 </script>

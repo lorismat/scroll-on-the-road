@@ -3,12 +3,15 @@
 
     <Home />
 
-    <Map 
-    />
-
-    <Scroll 
-      :trackingData="trackingData"
-    />
+    <div id="scrolly" class="relative">
+      <Map 
+      />
+      <Scroll class="relative"
+        :trackingData="trackingData"
+      />
+    </div>
+    
+    <Outro />
     
   </div>
 </template>

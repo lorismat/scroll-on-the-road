@@ -4,7 +4,7 @@
       <nav>
         <ul class="inline-flex">
           <!-- <li class="p-4"><NuxtLink to="/">Home</NuxtLink></li> -->
-          <li class="p-4"><NuxtLink to="/about">About</NuxtLink></li>
+          <!-- <li class="p-4"><NuxtLink to="/about">About</NuxtLink></li> -->
         </ul>
       </nav>
     </header>

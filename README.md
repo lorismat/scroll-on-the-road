@@ -8,25 +8,18 @@
 
 ## Ideas and todo
 
+- nav bar with different parts
+- promise handling to load the data
 - add a progress bar
 - draw the svg
-- get the us map with states
-- design a basic card
-- draw the map with linked coordinates
-
-## to implement asap
-
-- first parts of the story from a file
-
-- point appear on scroll
-- road tracing (find a method)
-- 
+- work on the design 
+- choose the best fonts
+- work on the svg animation
+- add the other chapters (best way ?)
+- write the methodology
 
 ## To fix
 
-- remove the timeout and replace by lifecycle hook or watchers
-- manage the data and prevent loading from various files
-- fix promises chaining
 
 ## for blog article
 

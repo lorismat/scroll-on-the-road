@@ -1,6 +1,6 @@
 <template>
   <div class="sm:m-1">
-    <Header />
+    <TheMenu />
     <NuxtPage 
     />
   </div>

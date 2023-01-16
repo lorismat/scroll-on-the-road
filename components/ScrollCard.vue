@@ -1,11 +1,20 @@
 <template>
   <div>
-    <div class="step border-2 border-black p-4 m-4 relative bg-white">
-      <!-- {{ idx }} <br> -->
-      {{ text }} <br><br>
-      <span class="font-bold">{{ place }}</span> <br>
-      <span class="italic">{{ state }}</span><br>
-      by <span class="font-bold underline">{{ transp }}</span>
+    <div class="step" :data-step="idxByType" :data-type="type">
+      
+      <div v-if="type == 'p'">
+        <ScrollCardPoint 
+          :text="text" 
+          :place="place" 
+          :state="state" 
+          :transp="transp" 
+        />
+      </div>
+
+      <div v-else>
+        <ScrollCardRoad :text="text" />
+      </div>
+
     </div>
 
     <div class="blank">
@@ -16,9 +25,9 @@
 
 <script setup>
 
+const triggerScrollama = useState('trigger-scrollama', () => "");
 
-
-defineProps({
+const props = defineProps({
   text: String,
   place: String, 
   state: String,
@@ -26,12 +35,23 @@ defineProps({
   idx: String
 })
 
+const idxByType = computed(() => {
+  return props.idx.split('-')[1];
+})
+
+const type = computed(() => {
+  return props.idx.split('')[0];
+})
+
+onMounted(() => {
+  triggerScrollama.value = "ready";
+})
 
 </script>
 
 <style scoped>
 .blank {
-  min-height: 100vh;
+  min-height: 600px;
 }
 
 </style>
