@@ -1,8 +1,8 @@
 <template>
-  <div class="my-10 ">
-    <div class="mx-auto border-t-2 border-black max-w-lg">
+  <div id="about" class="my-10">
+    <div class="mx-auto max-w-lg">
 
-      <h1 class="text-lg font-serif my-4">About The Project</h1>
+      <h1 class="text-lg font-serif my-4 pt-10">About The Project</h1>
       
       <p class="py-2 text-justify">
 

@@ -11,6 +11,13 @@
         />
       </div>
 
+      <div v-else-if="type == 's'">
+        <ScrollCardSection 
+          :text="text" 
+          :idx="idx"
+        />
+      </div>
+
       <div v-else>
         <ScrollCardRoad :text="text" />
       </div>

@@ -8,18 +8,14 @@
 
 ## Ideas and todo
 
-- nav bar with different parts
-- promise handling to load the data
-- add a progress bar
-- draw the svg
+- proper loader when landing to the page or refreshing
 - work on the design 
-- choose the best fonts
 - work on the svg animation
-- add the other chapters (best way ?)
-- write the methodology
+- proof check places
 
 ## To fix
 
+- cleaning on scrolling + section click
 
 ## for blog article
 

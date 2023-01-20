@@ -11,3 +11,7 @@
   font-family: 'Libre';
   src: url('/assets/fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf') format('truetype');
 }
+
+html {
+  scroll-behavior: smooth;
+}

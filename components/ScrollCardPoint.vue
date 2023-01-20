@@ -4,10 +4,14 @@
     <div class="py-2 font-type tracking-tighter">
       {{ text }}
     </div>
+
+    <div class="relative">
+      <img class="w-48 absolute right-0" :src="transport" :alt="transp">
+    </div>
     
-    by <span class="font-bold underline">{{ transp }}</span>
   </div>
 </template>
+
 
 <script setup>
 
@@ -16,6 +20,10 @@ const props = defineProps({
   place: String, 
   state: String,
   transp: String
+})
+
+const transport = computed(() => {
+  return `/img/${props.transp}.png`
 })
 
 

@@ -11,6 +11,8 @@ export default defineNuxtConfig({
     }
   }, 
 
+  modules: ['nuxt-svgo'],
+
   css: ['~/assets/css/main.css'],
 
   postcss: {
