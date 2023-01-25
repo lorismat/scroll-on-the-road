@@ -1,7 +1,5 @@
 <template>
   <div class="sm:m-1">
-    <TheMenu />
-    <NuxtPage 
-    />
+    <NuxtPage />
   </div>
 </template>

@@ -1,5 +1,9 @@
 # On The Road
 
+## Finalize
+
+- the pudding inspi for methodology
+
 ## Packages and tools
 
 - d3 for the map and coordinates
@@ -8,9 +12,7 @@
 
 ## Ideas and todo
 
-- proper loader when landing to the page or refreshing
 - work on the design 
-- work on the svg animation
 - proof check places
 
 ## To fix

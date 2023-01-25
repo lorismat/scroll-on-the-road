@@ -13,29 +13,24 @@
         an attempt to follow Jack Kerouac and Neal Cassady on their trip. 
 
         <br> <br> <!-- methodology and open contributions -->
-        All the quotes are extracted from the original scroll edition (2007). In case you are wondering why you see the real names, 
-        that is the reason. I trusted my own notes to track the different 
-        locations. If you think I missed some, reach me out on Twitter or comment the public the google sheet
+        All the quotes are extracted from the original scroll edition (2007). I trusted my own notes to track the different 
+        locations. If you think I missed any city, reach me out on <a class="underline pb-2" href="https://twitter.com/lorismat_" target="_blank" rel="noopener noreferrer">Twitter</a> or comment the  
+        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">public google sheet</a>
         I created. The road itself is based on the recommended itinerary by Google Maps from one point to another as of January 16th. 
-        Some road were probably not existing at the time, making the present itinerary not fully accurate.
+        Some roads were probably not existing at the time, making the present itinerary not fully accurate.
 
         <br> <br> <!-- other projects -->
-        I would like to mention other projects about the book that inspired me: <br> <br>
-        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">This interactive Google My Maps</a> <br>
-        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">A book of the whole itinerary</a> 
+        I would like to mention another project about the book that inspired me, the interactive 
+        <a class="underline pb-2" href="http://dennismansker.com/ontheroad.htm" target="_blank" rel="noopener noreferrer">Google My Maps places in On The Road</a> by 
+        Dennis Mansker.
 
         <br> <br> <!-- source code and data and copyright -->
-        Below are the source code of the application, the map I created and used to draw the itinerary and the google sheet with 
-        the original quotes from the text. Feel free to use any of them, but please let me know if you do! <br><br>
+        All the project is open for contributions, and you will find below the necessary. The project iteslef is developed in Javascript with 
+        vue.js, nuxt, d3.js and scrollama.<br><br>
 
-        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Source Code</a> <br> 
-        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Google My Maps</a> <br> 
-        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Google Spreadsheet</a> <br> 
-
-
-        <br> <br> <!-- tools I've used -->
-        Developped with 
-        <code>vue.js</code>, <code>nuxt</code>, <code>d3.js</code>, & <code>scrollama</code>.
+        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Source Code</a> on Github <br> 
+        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Google My Maps</a> itinerary <br> 
+        <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Google Spreadsheet</a> with selected quotes <br> 
 
         <br> <br>
         <div class="text-center"><span class="underline">Share this project</span></div> 
