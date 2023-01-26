@@ -24,5 +24,5 @@
 - google my maps, pinning the points on the road and getting the itinerary
 - export the layer
 - convert kmz to geojson with map shaper
-- simplify the geojson and export as topojson
+- simplify the geojson and export as topojson (0.5%)
 - load the topo files, mind the projection

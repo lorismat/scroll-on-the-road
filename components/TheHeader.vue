@@ -10,10 +10,15 @@
       <div id="signature" class="invisible font-serif py-2 text-right italic">— Jack Kerouac</div>
     </div>
 
-    <div id="scroll-roll" class="sm:p-8 pt-2 pb-6 invisible">
+    <div id="scroll-roll" class="sm:p-8 pt-2 pb-2 invisible">
       <Arrow />
     </div>
 
+    <!--
+      <div id="loader" class="font-mono text-center py-10 opacity-0">
+        Waiting for a car...
+      </div>
+    -->
     
   </div>
 </template>
@@ -24,28 +29,36 @@ import Arrow from '@/assets/svg/arrow.svg';
 
 const trigger = useState('trigger');
 
-console.log(trigger);
-
 const textString = `
 And this was really the way 
 that my whole road experience began 
 and the things that were to come are too fantastic not to tell.`.split('');
 
+const test = false;
+
 onMounted(() => {
-  anime({
-    targets: '.letters',
-    opacity: 1,
-    delay: anime.stagger(10+ 20*Math.random()),
-    complete: function(anim) {
-      const sig = document.getElementById("signature");
-      const scroll = document.getElementById("scroll-roll");
-      sig.classList.remove("invisible");
-      scroll.classList.remove("invisible");
+  const sig = document.getElementById("signature");
+  const scroll = document.getElementById("scroll-roll");
 
-      trigger.value = true;
-    }
-
-  });
+  if (test) {
+    anime({
+      targets: '.letters',
+      opacity: 1,
+      delay: anime.stagger(10 + 20*Math.random()),
+      complete: function(anim) {
+        sig.classList.remove("invisible");
+        setTimeout(() => {
+          scroll.classList.remove("invisible");
+          trigger.value = true;
+        }, 500);
+      }
+    });
+  } else {
+    sig.classList.remove("invisible");
+    scroll.classList.remove("invisible");
+    trigger.value = true;
+  }
+  
 })
 
 </script>

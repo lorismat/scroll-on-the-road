@@ -4,7 +4,7 @@
 
       <h1 class="text-lg font-serif my-4 pt-10">About The Project</h1>
       
-      <p class="py-2 text-justify">
+      <p class="text-sm sm:text-base py-2 sm:text-justify">
 
         
 
@@ -33,7 +33,7 @@
         <a class="underline pb-2" href="http://" target="_blank" rel="noopener noreferrer">Google Spreadsheet</a> with selected quotes <br> 
 
         <br> <br>
-        <div class="text-center"><span class="underline">Share this project</span></div> 
+        <TwitterButton />
 
         <div class="text-center py-8">by <span class="underline">Loris Mat</span></div>
 

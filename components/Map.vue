@@ -2,7 +2,10 @@
   <div>
     <div class="w-full sm:w-10/12 mx-auto" id="us-map">
     </div> 
-    <div class="sm:w-10/12 mx-auto" id="progress-bar"></div>
+    <div class="sm:w-10/12 mx-auto text-xs py-4 sm:py-0 sm:text-base">
+      <div class="text-gray-400">roll progress ({{ progress }}%)</div>
+      <div id="progress-bar"></div>
+    </div>
   </div>
    
 </template>
@@ -28,7 +31,7 @@ function drawMap() {
     return d;
   })
 
-  const road = d3.json("/map/it-v2.json", function(d) {
+  const road = d3.json("/map/it-v3.json", function(d) {
     return d;
   })
 
@@ -68,8 +71,22 @@ function drawMap() {
   }).then((svg) => {
 
     road.then((data) => {
-      const road = topojson.feature(data, data.objects["it-v2-2"]).features;
-      let points = topojson.feature(data, data.objects["it-v2-1"]).features;
+
+      data.objects["poly"] = { type: "GeometryCollection", geometries: [] };
+      data.objects["points"] = { type: "GeometryCollection", geometries: [] };
+
+      // iterate over object to merge poly and points
+      for (let [key, value] of Object.entries(data.objects)) {
+        if (key.split('-')[1] == 'points') {
+          value.geometries.forEach(e => data.objects["points"].geometries.push(e));
+        }
+        else if (key.split('-')[1] == 'poly') {
+          value.geometries.forEach(e => data.objects["poly"].geometries.push(e));
+        }
+      }
+
+      let road = topojson.feature(data, data.objects["poly"]).features;
+      let points = topojson.feature(data, data.objects["points"]).features;
 
       // removing every double point
       points = points.filter(d => d.properties.styleUrl != '#icon-ci-10-nodesc');
@@ -127,21 +144,32 @@ function drawMap() {
         .attr("stroke", "black")
         .attr("d", "M 0 0 C 8 0 11 0 12 12")
         .attr("stroke-width", 2)
-        .attr("marker-start", d => projectionRoad(d.geometry.coordinates)[0] >= width/2 ? "url(#head)" : "")
-        .attr("marker-end", d => projectionRoad(d.geometry.coordinates)[0] < width/2 ? "url(#head)" : "")
+        .attr("opacity", d => projectionRoad(d.geometry.coordinates) != null ? 1 : 0)
+        .attr("marker-start", function(d) {
+          if (projectionRoad(d.geometry.coordinates) != null) {
+            return projectionRoad(d.geometry.coordinates)[0] >= width/2 ? "url(#head)" : "";
+          }
+        })
+        .attr("marker-end", function(d) {
+          if (projectionRoad(d.geometry.coordinates) != null) {
+            return projectionRoad(d.geometry.coordinates)[0] < width/2 ? "url(#head)" : "";
+          }
+        })
         .attr("fill", "none")
         .attr("stroke", "black")
         .attr("transform", function(d,i) {
-          let coord = projectionRoad(d.geometry.coordinates);
-          let x = coord[0];
-          let y = coord[1];
-          let tr;
-          if (x > width/2) {
-            tr = `translate(${x + 15} ${y - 15}) rotate(-45 0 0)`;
-          } else {
-            tr = `translate(${x - 30} ${y - 15}) rotate(-45 0 0)`;
+          if (projectionRoad(d.geometry.coordinates) != null) {
+            let coord = projectionRoad(d.geometry.coordinates);
+            let x = coord[0];
+            let y = coord[1];
+            let tr;
+            if (x > width/2) {
+              tr = `translate(${x + 15} ${y - 15}) rotate(-45 0 0)`;
+            } else {
+              tr = `translate(${x - 30} ${y - 15}) rotate(-45 0 0)`;
+            }
+            return tr
           }
-          return tr
         })
     };
 
@@ -157,6 +185,7 @@ function drawMap() {
 }
 
 const widthProgressBar = 960;
+const progress = ref(0);
 
 function progressBar() {
   const height = 2;
@@ -195,6 +224,7 @@ function scrollActions() {
     
     .onStepProgress((res) => {
       d3.select("#progress-bar-rect").attr("width", res.progress*widthProgressBar);
+      progress.value = Math.round(res.progress * 100);
     })
 
   // scroller for slides

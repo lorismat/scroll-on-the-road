@@ -3,10 +3,6 @@
 
     <Home />
 
-    <div id="loader" class="font-mono text-center py-10">
-      Waiting for a car...
-    </div>
-
 
     <div v-if="trigger" id="main-block" class="">
       <div id="scrolly" class="relative whole-scroll">
@@ -22,6 +18,7 @@
         <Scroll class="relative z-10"
           :trackingData="trackingData"
         />
+
       </div>
       <About />
 
@@ -37,16 +34,18 @@ const trackingData = ref([]);
 const trigger = useState('trigger', () => false);
 
 function loadData() {
-  // d3.csv('/data/otr.csv') // prod 
-  d3.csv('https://docs.google.com/spreadsheets/d/1v9jnjcfKPv7kxmnKWFRk4Cz7XzjXM2Pqqiy_36zwLoU/export?format=csv&gid=1864892355') // dev
+  d3.csv('/data/otr.csv') // prod / careful with data usage
+  // d3.csv('https://docs.google.com/spreadsheets/d/1v9jnjcfKPv7kxmnKWFRk4Cz7XzjXM2Pqqiy_36zwLoU/export?format=csv&gid=1864892355') // dev
   .then((data) => {
     // document.body.scrollTop = document.documentElement.scrollTop = 0;
     trackingData.value = data;
   })
+  /*
   .then(() => {
     const loader = document.getElementById("loader");
-    loader.classList.add("hidden");
+    loader.classList.add("invisible");
   })
+  */
 }
 
 onMounted(() => {

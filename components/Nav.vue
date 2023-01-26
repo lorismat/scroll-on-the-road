@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-rows-2 grid-flow-col sm:grid-rows-1">
+  <div class="grid grid-rows-2 text-sm sm:text-base grid-flow-col sm:grid-rows-1">
     <div class="p-2 px-6 text-center font-serif">
       <a id="section-link-0" class="" href="#s-0">Part I</a> 
     </div>
@@ -11,9 +11,6 @@
     </div>
     <div class="p-2 px-6 text-center font-serif">
       <a id="section-link-3" href="#s-3">Part IV</a> 
-    </div>
-    <div class="p-2 px-6 text-center font-serif">
-      <a id="section-link-4" href="#s-4">Part V</a> 
     </div>
     <div class="p-2 px-6 text-center font-serif">
       <a id="section-link-5" href="#about">About</a>
