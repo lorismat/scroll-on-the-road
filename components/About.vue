@@ -10,7 +10,7 @@
 
         <br><br>
         All the quotes are extracted from the original scroll edition (2007). I trusted my own notes to track the different 
-        locations. If you think I missed any city, reach me out on <a class="underline pb-2" href="https://twitter.com/lorismat_" target="_blank" rel="noopener noreferrer">Twitter</a> or comment the  
+        locations. I haven't yet added the map of Mexico, but I will work on it soon! If you think I missed any city, reach me out on <a class="underline pb-2" href="https://twitter.com/lorismat_" target="_blank" rel="noopener noreferrer">Twitter</a> or comment the  
         <a class="underline pb-2" href="https://docs.google.com/spreadsheets/d/1lqpTaeTtosI7LV2zcAdRcX9cuxbxRK4yZx9RiXgk3go/" target="_blank" rel="noopener noreferrer">public spreadsheet</a>
         I created. The road itself is based on the recommended itinerary by Google Maps from one point to another as of January 16th. 
         Some roads were probably not existing at the time, making the present itinerary not fully accurate.

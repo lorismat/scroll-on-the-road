@@ -116,7 +116,7 @@ function drawMap() {
         .attr("id", (d,i) => `path-idx-${i}`)
         .attr("fill", "transparent")
         .attr("stroke-width", 2)
-        .attr("stroke", "#000")
+        .attr("stroke", "#ccc")
 
     const g = svg.append('g');
 
@@ -126,10 +126,11 @@ function drawMap() {
         .attr("data-idx", (d,i) => i )
         .attr("display", "none")
         .attr("fill", "#fff")
-        .attr("stroke", "#000")
+        .attr("stroke", "#ccc")
         .attr("stroke-width", 2)
         .attr("r", 5)
         .attr("transform", (d,i) => `translate(${projectionRoad(d.geometry.coordinates)})`)
+        
     };
 
     function annotation(selection) {
@@ -245,11 +246,11 @@ function scrollActions() {
           const rd = d3.select(`#path-idx-${i}`);
           const distance = rd.attr("stroke-dasharray");
           if (i < step) {
-            rd.attr("stroke-dashoffset", 0 );
+            rd.attr("stroke-dashoffset", 0 ).attr("stroke", "#ccc");
           } else if (i == step) {
-            rd.attr("stroke-dashoffset", (1-p) * distance );
+            rd.attr("stroke-dashoffset", (1-p) * distance ).attr("stroke", "#000");
           } else {
-            rd.attr("stroke-dashoffset", distance );
+            rd.attr("stroke-dashoffset", distance ).attr("stroke", "#ccc");
           } 
         }        
       } 
@@ -276,7 +277,8 @@ function scrollActions() {
       // point 
       if ( type == "p" && dir == "down") {
         d3.selectAll(`[data-idx]`)
-          .attr("display", (d,i) => i <= step ? "visible": "none");
+          .attr("display", (d,i) => i == step ? "visible": "none")
+          .attr("stroke", (d,i) => i < step ? "#ccc" : "#000");
 
         // annotations
         d3.selectAll(`[data-annotation]`).attr("display", "none");
@@ -284,7 +286,8 @@ function scrollActions() {
 
       } else if (type == "p" && dir == "up") {
         d3.selectAll(`[data-idx]`)
-          .attr("display", (d,i) => i< step ? "visible": "none");
+          .attr("display", (d,i) => i+1 == step ? "visible": "none")
+          .attr("stroke", (d,i) => i+1 < step ? "#ccc" : "#000");
 
         // annotations
         d3.selectAll(`[data-annotation]`).attr("display", "none");
