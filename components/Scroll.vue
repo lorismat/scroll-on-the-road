@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <ScrollCard 
       v-for="l in trackingData"
       :text="l.text"
@@ -9,7 +8,6 @@
       :transp="l.transportation"
       :idx="l.idx"
     />
-    
   </div>
 </template>
 

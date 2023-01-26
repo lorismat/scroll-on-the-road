@@ -17,26 +17,23 @@ import * as topojson from "topojson-client";
 import 'intersection-observer'; 
 import scrollama from "scrollama";
 
-// global variables
 const projectionRoad = d3.geoAlbersUsa().scale(1280).translate([480, 300]);
 const pathRoad = d3.geoPath(projectionRoad);
 
-// map
 function drawMap() {
-
   const width = 960;
   const height = 600;
-
   const us = d3.json("/map/us-min.json",function(d) {
     return d;
   })
-
-  const road = d3.json("/map/it-v3.json", function(d) {
+  const road = d3.json("/map/itinerary.json", function(d) {
     return d;
   })
 
+  // draw map
   us.then((data) => {
-    const states = topojson.feature(data, data.objects.states).features.filter(d => d.id !== "02" && d.id !== "15" );
+    
+    const states = topojson.feature(data, data.objects.states).features.filter(d => d.id !== "02" && d.id !== "15" ); // removing Hawaï / Alaska 
     const nation = topojson.feature(data, data.objects.nation).features;
     const path = d3.geoPath();
 
@@ -70,12 +67,13 @@ function drawMap() {
       
   }).then((svg) => {
 
+    // draw roads and points
     road.then((data) => {
 
       data.objects["poly"] = { type: "GeometryCollection", geometries: [] };
       data.objects["points"] = { type: "GeometryCollection", geometries: [] };
 
-      // iterate over object to merge poly and points
+      // merge poly and points from itinerary.json
       for (let [key, value] of Object.entries(data.objects)) {
         if (key.split('-')[1] == 'points') {
           value.geometries.forEach(e => data.objects["points"].geometries.push(e));
@@ -88,10 +86,10 @@ function drawMap() {
       let road = topojson.feature(data, data.objects["poly"]).features;
       let points = topojson.feature(data, data.objects["points"]).features;
 
-      // removing every double point
+      // removing every double point caused by GoogleMyMaps limits to 10 points per road
       points = points.filter(d => d.properties.styleUrl != '#icon-ci-10-nodesc');
 
-      // marker for arrow
+      // marker for arrow annotation
       const defs = svg.append("defs");
       const marker = defs.append("marker")
         .attr("id", "head")
@@ -119,7 +117,6 @@ function drawMap() {
         .attr("fill", "transparent")
         .attr("stroke-width", 2)
         .attr("stroke", "#000")
-        //.attr("display", "none")
 
     const g = svg.append('g');
 
@@ -244,7 +241,6 @@ function scrollActions() {
       const len = document.querySelectorAll(".paths-road").length;
 
       if ( type == "r" ) {
-
         for (let i = 0; i<len; i++) {
           const rd = d3.select(`#path-idx-${i}`);
           const distance = rd.attr("stroke-dasharray");
@@ -259,6 +255,7 @@ function scrollActions() {
       } 
       
     })
+
     // enter for points
     .onStepEnter((res) => {
       const dir = res.direction;
@@ -294,7 +291,6 @@ function scrollActions() {
         d3.select(`[data-annotation="${step-1}"]`).attr("display", "visible");
       }
     })
-
 }
 
 watch(() => useState('trigger-scrollama'), () => {
@@ -302,6 +298,3 @@ watch(() => useState('trigger-scrollama'), () => {
 })
 
 </script>
-
-<style scoped>
-</style>

@@ -1,18 +1,17 @@
 <template>
   <div class="px-1">
 
-    <Home />
-
+    <TheHome />
 
     <div v-if="trigger" id="main-block" class="">
       <div id="scrolly" class="relative whole-scroll">
 
         <div class="flex justify-center sticky z-20 top-0 bg-white">
-          <Nav />
+          <TheNavBar />
         </div>
 
         <div class="flex flex-col justify-center sticky z-0 top-0 min-h-screen">
-          <Map />
+          <TheMap />
         </div>
 
         <Scroll class="relative z-10"
@@ -34,18 +33,12 @@ const trackingData = ref([]);
 const trigger = useState('trigger', () => false);
 
 function loadData() {
-  d3.csv('/data/otr.csv') // prod / careful with data usage
-  // d3.csv('https://docs.google.com/spreadsheets/d/1v9jnjcfKPv7kxmnKWFRk4Cz7XzjXM2Pqqiy_36zwLoU/export?format=csv&gid=1864892355') // dev
+  // d3.csv('/data/otr.csv') // local usage
+  d3.csv('https://docs.google.com/spreadsheets/d/1lqpTaeTtosI7LV2zcAdRcX9cuxbxRK4yZx9RiXgk3go/export?format=csv&gid=0')
   .then((data) => {
-    // document.body.scrollTop = document.documentElement.scrollTop = 0;
     trackingData.value = data;
   })
-  /*
-  .then(() => {
-    const loader = document.getElementById("loader");
-    loader.classList.add("invisible");
-  })
-  */
+
 }
 
 onMounted(() => {
