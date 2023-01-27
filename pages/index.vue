@@ -1,5 +1,5 @@
 <template>
-  <div class="px-1">
+  <div class="px-0">
 
     <TheHome />
 
@@ -19,7 +19,10 @@
         />
 
       </div>
-      <About />
+      <div class="bg-gray-100">
+        <About />
+      </div>
+     
 
     </div>
        
