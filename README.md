@@ -1,9 +1,9 @@
 # On The Road
 
-[Website](https://scroll-on-the-road.netlify.app/)  
+[Website](https://on-the-road.lorismat.com/)  
 
 _All the project is open for contributions, via github, or the datasets links below_.  
-Feel free to reach me out for any suggestions/feedback (@lorismat_ on Twitter).  
+Feel free to reach me out for any suggestions/feedback ( [@lorismat_](https://twitter.com/lorismat_) on Twitter).  
 You can use any part of the project such as the maps, the code or the spreadsheet but please let me know if you do!
 
 ## Packages and tools

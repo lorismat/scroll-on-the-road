@@ -4,7 +4,7 @@
       href="https://twitter.com/share?ref_src=twsrc%5Etfw" 
       class="twitter-share-button" 
       data-text="Scrolling On The Road!" 
-      data-url="https://www.lorismat.com/" 
+      data-url="on-the-road.lorismat.com" 
       data-via="lorismat_" 
       data-hashtags="ontheroad" 
       data-related="" 
