@@ -5,24 +5,30 @@
       <h1 class="text-lg font-bold font-serif my-4 pt-10">About The Project</h1>
       <p class="text-sm font-serif text-gray-700 sm:text-base py-2 sm:text-justify sm:leading-7">
 
-        <i>On The Road</i> became an obession as soon as I discovered it. This project is 
-        an attempt to follow Jack Kerouac and Neal Cassady on their trip. 
+        <i>On The Road</i> quickly became an obsession when I discovered it. 
+        This project aims at following the journey of Jack Kerouac and Neal Cassady as depicted in the novel. 
 
         <br><br>
-        All the quotes are extracted from the original scroll edition (2007). I trusted my own notes to track the different 
-        locations. I haven't yet added the map of Mexico, but I will work on it soon! If you think I missed any city, reach me out on <a class="text-black underline underline-offset-4" href="https://twitter.com/lorismat_" target="_blank" rel="noopener noreferrer">Twitter</a> or comment the  
+
+        All quotes utilized in this project have been extracted from the original scroll edition (2007). The quotes are the properties of 
+        © <a class="text-black underline underline-offset-4" href="https://jackkerouac.com/" target="_blank">The Kerouac Estate</a>. <br><br>
+        My own notes were relied upon to track the various locations mentioned in the book. 
+        Currently, a map of Mexico has yet to be added, but I am working to include it in the near future. 
+        If you think I have missed any location, please feel free to reach out to me via 
+        <a class="text-black underline underline-offset-4" href="https://twitter.com/lorismat_" target="_blank" rel="noopener noreferrer">Twitter</a>
+        or by commenting on the 
         <a class="text-black underline underline-offset-4" href="https://docs.google.com/spreadsheets/d/1lqpTaeTtosI7LV2zcAdRcX9cuxbxRK4yZx9RiXgk3go/" target="_blank" rel="noopener noreferrer">public spreadsheet</a>
-        I created. The road itself is based on the recommended itinerary by Google Maps from one point to another as of January 16th. 
-        Some roads were probably not existing at the time, making the present itinerary not fully accurate.
+        I have created. 
+        The road itinerary used in this project is based on the recommended route provided by Google Maps as of January 16th. 
+        It should be noted that some roads may not have existed at the time the novel was written, making the present itinerary not entirely accurate.
 
         <br><br>
-        I would like to mention another project about the book that inspired me, the  
-        <a class="text-black underline underline-offset-4" href="http://dennismansker.com/ontheroad.htm" target="_blank" rel="noopener noreferrer">interactive places</a> by 
-        Dennis Mansker.
+        I would also like to acknowledge another project that was an inspiration to me; 
+        <a class="text-black underline underline-offset-4" href="http://dennismansker.com/ontheroad.htm" target="_blank" rel="noopener noreferrer">interactive places</a>
+        by Dennis Mansker.
 
         <br><br>
-        All the project is <span class="font-bold">open for contributions</span>, and you will find below the necessary. The project iteslef is developed in Javascript with 
-        vue.js, nuxt, d3.js and scrollama.<br><br>
+        This project is <span class="font-bold">open to contributions</span>, and all necessary information can be found below. The project itself has been developed using Javascript, with the use of Vue.js, Nuxt, D3.js and Scrollama. <br><br>
 
         <a class="text-black underline underline-offset-4" href="https://github.com/lorismat/scroll-on-the-road" target="_blank" rel="noopener noreferrer">Source Code</a> on Github <br> 
         <a class="text-black underline underline-offset-4" href="https://drive.google.com/drive/folders/1xazTS5vj55szr1AcX44OCdgju1ZepKu0?usp=share_link" target="_blank" rel="noopener noreferrer">Google My Maps</a> itinerary <br> 
