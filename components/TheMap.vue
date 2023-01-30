@@ -11,6 +11,19 @@
 </template>
 
 <script setup>
+
+/* 
+
+TO IMPROVE:
+- active section on progress 
+- chaining promises
+
+TO ADD:
+- color/symbol code for different sections
+- Map of mexico
+
+*/ 
+
 import * as d3 from 'd3';
 import * as topojson from "topojson-client";
 
@@ -79,7 +92,11 @@ function drawMap() {
           value.geometries.forEach(e => data.objects["points"].geometries.push(e));
         }
         else if (key.split('-')[1] == 'poly') {
-          value.geometries.forEach(e => data.objects["poly"].geometries.push(e));
+          const idx = key.split('-')[0] - 1;
+          value.geometries.forEach(e => {
+            e.properties.book = idx;
+            data.objects["poly"].geometries.push(e);
+          });
         }
       }
 
@@ -114,9 +131,11 @@ function drawMap() {
         .attr('d', pathRoad)
         .attr("class", "paths-road")
         .attr("id", (d,i) => `path-idx-${i}`)
+        .attr("data-book-idx", (d,i) => d.properties.book)
         .attr("fill", "transparent")
-        .attr("stroke-width", 2)
-        .attr("stroke", "#ccc")
+        .attr("stroke-width", 0)
+        .attr("stroke", "#fff")
+        .attr("stroke-linecap", "round")
 
     const g = svg.append('g');
 
@@ -222,7 +241,36 @@ function scrollActions() {
     
     .onStepProgress((res) => {
       d3.select("#progress-bar-rect").attr("width", res.progress*widthProgressBar);
+
       progress.value = Math.round(res.progress * 100);
+
+      // active section
+      function fetchIndx(x) {
+        if (x < 0.366) {
+          return 0
+        } else if (x < 0.639) {
+          return 1
+        } else if (x < 0.83) {
+          return 2
+        } else {
+          return 3
+        }
+      };
+
+      d3.selectAll(".section-link").attr("class", "section-link");
+      d3.selectAll(".paths-road")
+        .attr("stroke-width", 2)
+        .attr("stroke", "#ccc")
+        ;
+
+      d3.select(`#section-link-${fetchIndx(res.progress)}`)
+        .attr("class", `section-link border-b-2 border-black`);
+
+      d3.selectAll(`[data-book-idx="${fetchIndx(res.progress)}"]`)
+        .attr("stroke-width", 4)
+        .attr("stroke", "#111")
+        ;
+
     })
 
   // scroller for slides
@@ -230,7 +278,8 @@ function scrollActions() {
     .setup({
       step: ".step",
       progress: true,
-      threshold: 1
+      threshold: 1,
+      offset: 0.6
     })
     
     // progress for roads
@@ -245,12 +294,26 @@ function scrollActions() {
         for (let i = 0; i<len; i++) {
           const rd = d3.select(`#path-idx-${i}`);
           const distance = rd.attr("stroke-dasharray");
+
+          // remove annotations
+          d3.selectAll(`[data-idx]`).attr("display", "none");
+          d3.selectAll(`[data-annotation]`).attr("display", "none");
+
           if (i < step) {
-            rd.attr("stroke-dashoffset", 0 ).attr("stroke", "#ccc");
+            rd.attr("stroke-dashoffset", 0 )
+              // .attr("stroke", "#000")
+              // .attr("stroke-width", 2)
+              ;
           } else if (i == step) {
-            rd.attr("stroke-dashoffset", (1-p) * distance ).attr("stroke", "#000");
+            rd.attr("stroke-dashoffset", (1-p) * distance )
+              // .attr("stroke", "#000")
+              // .attr("stroke-width", 3)
+              ;
           } else {
-            rd.attr("stroke-dashoffset", distance ).attr("stroke", "#ccc");
+            rd.attr("stroke-dashoffset", distance )
+              // .attr("stroke", "#bbb")
+              // .attr("stroke-width", 2)
+              ;
           } 
         }        
       } 
@@ -262,17 +325,6 @@ function scrollActions() {
       const dir = res.direction;
       const type = res.element.dataset.type;
       const step = res.element.dataset.step;
-
-      // active section
-      if (type == "s"  && dir == "down") {
-        d3.selectAll(".section-link").attr("class", "section-link border-black");
-        d3.select(`#section-link-${step}`).attr("class", "section-link border-black border-b-2");
-      }
-
-      if (type == "s"  && dir == "up") {
-        d3.selectAll(".section-link").attr("class", "section-link border-black");
-        d3.select(`#section-link-${step-1}`).attr("class", "section-link border-black border-b-2");
-      }
 
       // point 
       if ( type == "p" && dir == "down") {
