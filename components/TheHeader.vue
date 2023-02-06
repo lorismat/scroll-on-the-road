@@ -8,8 +8,8 @@
       </p>
       <div id="signature" class="invisible font-serif py-2 text-right italic">— Jack Kerouac</div>
     </div>
-    <div id="scroll-roll" class="sm:p-8 pt-2 pb-2 invisible">
-      <Arrow />
+    <div id="scroll-roll" class="sm:p-8 pt-2 pb-2 invisible text-center">
+      <span class="italic font-serif text-sm font-bold">scroll down</span>
     </div>
     
   </div>
