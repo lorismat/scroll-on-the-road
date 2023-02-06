@@ -2,7 +2,7 @@
   <div class="flex justify-center">
     <a 
       href="https://twitter.com/share?ref_src=twsrc%5Etfw" 
-      class="twitter-share-button" 
+      class="twitter-share-button underline underline-offset-4" 
       data-text="Scrolling On The Road!" 
       data-url="on-the-road.lorismat.com" 
       data-via="lorismat_" 
@@ -11,7 +11,7 @@
       data-dnt="true"
       data-size="large"
       data-show-count="false">
-        Share
+        Share on Twitter
     </a>
           
     </div>
